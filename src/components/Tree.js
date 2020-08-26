@@ -1,12 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 import Node from "./Node";
 
-const Tree = ({ data = [], width = 100 }) => {
+const Tree = ({ data = [] }) => {
   return (
-    <Wrapper width={width}>
+    <Wrapper>
       {data.map((item, index) => {
         return <Node key={index} {...item} />;
       })}
@@ -15,14 +15,10 @@ const Tree = ({ data = [], width = 100 }) => {
 };
 
 const Wrapper = styled.div`
-  padding: 10px 20px;
+  padding: 10px 0;
   display: flex;
   flex-direction: column;
-  ${({ width }) =>
-    width &&
-    css`
-      width: ${width}px;
-    `}
+  width: 100%;
 `;
 
 Tree.propTypes = {

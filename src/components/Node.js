@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
 
 import { FOLDER } from "../constants/";
@@ -11,11 +10,7 @@ const Node = ({ title = "Untitled", type, childs = null, last, root }) => {
   return (
     <Wrapper last={last} root={root}>
       {isFolder ? (
-        <Folder
-          title={root ? `${title} - Root` : title}
-          root={root}
-          childs={childs}
-        />
+        <Folder title={title} root={root} childs={childs} />
       ) : (
         <File title={title} />
       )}
@@ -24,14 +19,9 @@ const Node = ({ title = "Untitled", type, childs = null, last, root }) => {
 };
 
 const Wrapper = styled.div`
-  padding-bottom: 5px;
+  padding-bottom: 15px;
   display: flex;
   width: 100%;
-  ${({ root }) =>
-    root &&
-    css`
-      padding-bottom: 15px;
-    `}
 
   ${({ last }) =>
     last &&
@@ -39,9 +29,5 @@ const Wrapper = styled.div`
       padding-bottom: 0;
     `}
 `;
-
-Node.propTypes = {
-  data: PropTypes.array,
-};
 
 export default Node;

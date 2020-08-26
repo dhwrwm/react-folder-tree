@@ -1,14 +1,8 @@
 import React, { useState } from "react";
-import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
 
 import Node from "./Node";
-import {
-  FolderIcon,
-  FolderOpenIcon,
-  RightArrowIcon,
-  DownArrowIcon,
-} from "../svgs";
+import { FolderIcon, FolderOpenIcon } from "../svgs";
 
 const Folder = ({ title = "Untitled", childs = null, root }) => {
   const [open, toggleOpen] = useState(false);
@@ -21,13 +15,6 @@ const Folder = ({ title = "Untitled", childs = null, root }) => {
           <FolderIcon width={20} height={20} />
         )}
         <Title open={open}>{title}</Title>
-        <RightIconWrapper>
-          {open ? (
-            <RightArrowIcon width={20} height={20} />
-          ) : (
-            <DownArrowIcon width={20} height={20} />
-          )}
-        </RightIconWrapper>
       </FolderItem>
       {open && (
         <ChildWrapper>
@@ -53,16 +40,11 @@ const FolderItem = styled.div`
   width: 100%;
 `;
 
-const RightIconWrapper = styled.div`
-  position: absolute;
-  right: 10px;
-`;
-
 const ChildWrapper = styled.div`
   padding: 10px 0 0 15px;
 `;
 
-const Title = styled.div`
+const Title = styled.p`
   font-size: 16px;
   color: grey;
   font-family: "Gill Sans", sans-serif;
@@ -73,9 +55,5 @@ const Title = styled.div`
       color: #9fa8da;
     `}
 `;
-
-Folder.propTypes = {
-  data: PropTypes.array,
-};
 
 export default Folder;
